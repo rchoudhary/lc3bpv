@@ -25,7 +25,8 @@ module LC3BFetchTest(
     output reg [15:0] de_v
     );
 
-    wire clk, mem_clk;
+    wire clk;     // Used by pipeline latches
+    wire mem_clk; // Used by memory module
     assign mem_clk = raw_clk;
     ClockDivider_2 clkDiv_2(
         .clk(raw_clk), // Input
@@ -55,9 +56,11 @@ module LC3BFetchTest(
         .mem1_r(imem_r)
     );
 
+    // Input signals to latches
     wire [15:0] de_npc_in;
     wire [15:0] de_ir_in;
     wire de_v_in;
+
     wire ld_pc;
     wire ld_de;
     
