@@ -32,8 +32,8 @@ module Memory(
     initial begin
         mem1_r <= 1'b0;
         for (i = 0; i < 32768; i = i + 1) begin
-            hiBytes[i] <= i[15:8];
-            lowBytes[i] <= i[7:0];
+            hiBytes[i] <= i[14:7];
+            lowBytes[i] <= {i[6:0], 1'b0};
         end
     end
 
