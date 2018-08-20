@@ -2,7 +2,7 @@
 // 
 // Author: Rutvik Choudhary
 // Created: 8/11/18
-// Filename: lc3b.v
+// Filename: lc3b_fetch_test.v
 // Modules: LC3BFetchTest
 // Description: Top level module for testing the fetch stage.
 //
