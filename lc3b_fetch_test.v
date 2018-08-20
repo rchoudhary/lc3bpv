@@ -9,7 +9,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module LC3BFetchTest(
-    input clk,
+    input raw_clk,
     input dep_stall,
     input mem_stall,
     input v_de_br_stall,
@@ -25,6 +25,13 @@ module LC3BFetchTest(
     output reg [15:0] de_v
     );
 
+    wire clk, mem_clk;
+    assign mem_clk = raw_clk;
+    ClockDivider_2 clkDiv_2(
+        .clk(raw_clk), // Input
+        .clk_div(clk)  // Output
+    );
+
     reg [15:0] PC;
 
     initial begin
@@ -36,7 +43,7 @@ module LC3BFetchTest(
 
     Memory RAW_MEM(
         // Inputs
-        .clk(clk),
+        .clk(mem_clk),
         .addr1(PC),
         .addr2(16'b0),
         .en(1'b1),
