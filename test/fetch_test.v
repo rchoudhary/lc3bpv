@@ -2,13 +2,15 @@
 // 
 // Author: Rutvik Choudhary
 // Created: 8/11/18
-// Filename: lc3b_fetch_test.v
-// Modules: LC3BFetchTest
-// Description: Top level module for testing the fetch stage.
+// Filename: fetch_test.v
+// Modules: FetchTest
+// Description: Top level module for testing the fetch stage. We need this module
+//              because the fetch stage requires external resources, namely
+//              the memory module
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-module LC3BFetchTest(
+module FetchTest(
     input raw_clk,
     input dep_stall,
     input mem_stall,
