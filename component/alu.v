@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////////
-// 
+//
 // Author: Rutvik Choudhary
 // Created: 6/10/18
 // Filename: alu.v
@@ -13,7 +13,7 @@ module ALU(
     input [15:0] b,
     input [1:0] op,
     output reg [15:0] res
-    );
+);
     
     `define ADD   2'b00
     `define AND   2'b01

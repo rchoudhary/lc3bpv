@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////////
-// 
+//
 // Author: Rutvik Choudhary
 // Created: 8/20/18
 // Filename: decode_stage.v
@@ -33,7 +33,7 @@ module DecodeStage(
     output [2:0] agex_drid_new,
     output [19:0] agex_cs,
     output agex_v
-    );
+);
 
     wire [5:0] cs_addr = {de_ir[15:11], de_ir[5]};
     wire [22:0] de_cs;
@@ -43,7 +43,7 @@ module DecodeStage(
         .clk(mem_clk),
         .addr(cs_addr),
         // Outputs
-        .csBits(de_cs)
+        .cs_bits(de_cs)
     );
 
     wire sr2_id_mux = de_ir[13];
@@ -60,8 +60,8 @@ module DecodeStage(
         .dataIn(sr_reg_data),
         .we(v_sr_ld_reg),
         // Outputs
-        .sr1Out(sr1_data),
-        .sr2Out(sr2_data)
+        .sr1_out(sr1_data),
+        .sr2_out(sr2_data)
     );
 
     wire de_br_stall = de_cs[7];

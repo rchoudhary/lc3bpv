@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////////
-// 
+//
 // Author: Rutvik Choudhary
 // Created: 8/19/18
 // Filename: clock_dividers.v
@@ -13,7 +13,7 @@
 module ClockDivider_2(
     input clk, 
     output reg clk_div
-    );
+);
 
     initial begin
         clk_div <= 0;

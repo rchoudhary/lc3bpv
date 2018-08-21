@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////////
-// 
+//
 // Author: Rutvik Choudhary
 // Created: 7/1/18
 // Filename: control_store.v
@@ -11,13 +11,13 @@
 module ControlStore(
     input clk,
     input [5:0] addr,
-    output reg [22:0] csBits
-    );
+    output reg [22:0] cs_bits
+);
 
     reg [22:0] ROM [0:63];
 
     always @(posedge clk) begin
-        csBits <= ROM[addr];
+        cs_bits <= ROM[addr];
     end
 
     initial begin

@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////////
-// 
+//
 // Author: Rutvik Choudhary
 // Created: 7/4/18
 // Filename: fetch_stage.v
@@ -27,11 +27,11 @@ module FetchStage(
     output de_v,
     output ld_de,
     output reg [15:0] new_pc
-    );
+);
 
-    wire [15:0] pcPlusTwo = pc + 2;
+    wire [15:0] pc_plus_two = pc + 2;
 
-    assign de_npc = pcPlusTwo;
+    assign de_npc = pc_plus_two;
     assign de_ir = (imem_r == 1) ? instr : 16'b0;
     assign de_v = !(!imem_r || v_de_br_stall || v_agex_br_stall || v_mem_br_stall);
     assign ld_de = !(dep_stall || mem_stall);
@@ -40,7 +40,7 @@ module FetchStage(
 
     always @(*) begin
         case (mem_pcmux)
-            0: new_pc <= pcPlusTwo;
+            0: new_pc <= pc_plus_two;
             1: new_pc <= target_pc;
             2: new_pc <= trap_pc;
             4: new_pc <= 16'b0;

@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////////
-// 
+//
 // Author: Rutvik Choudhary
 // Created: 6/10/18
 // Filename: seven_segment.v
@@ -9,9 +9,10 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-module HexTo7SegDecoder(digit, seg);
-    input [3:0] digit;
-    output reg [6:0] seg;
+module HexTo7SegDecoder(
+    input [3:0] digit,
+    output reg [6:0] seg
+);
 
     always @(*) begin
         case (digit)
@@ -36,30 +37,34 @@ module HexTo7SegDecoder(digit, seg);
     end
 endmodule
 
-module MultiplexClockDivider(clk100Mhz, multiplexClk);
-  input clk100Mhz;
-  output multiplexClk;
+
+module MultiplexClockDivider(
+    input clk_100mhz,
+    output multiplex_clk
+);
 
   reg[16:0] counter;
-  assign multiplexClk = counter[16];
+  assign multiplex_clk = counter[16];
 
   initial begin
     counter <= 0;
   end
 
-  always @ (posedge clk100Mhz)
+  always @ (posedge clk_100mhz)
   begin
     counter <= counter + 1;
   end
 endmodule
 
-module Hex4Display(clk, digits, onesPlace, enableDp, seg, an);
-    input clk, enableDp;
-    input [15:0] digits;
-    input [1:0] onesPlace;
-    
-    output [7:0] seg;
-    output reg [3:0] an;
+
+module Hex4Display(
+    input clk,
+    input [15:0] digits,
+    input [1:0] ones_place,
+    input dp_en,
+    output [7:0] seg,
+    output reg [3:0] an
+);
     
     reg [3:0] activeDigit;
     reg dp;
@@ -100,7 +105,7 @@ module Hex4Display(clk, digits, onesPlace, enableDp, seg, an);
             end
         endcase
 
-        dp <= (i == onesPlace && enableDp) ? 1 : 0;
+        dp <= (i == ones_place && dp_en) ? 1 : 0;
         
         if (i == 0) i <= 3;
         else i <= i - 1;

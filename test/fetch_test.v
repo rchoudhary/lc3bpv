@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////////
-// 
+//
 // Author: Rutvik Choudhary
 // Created: 8/11/18
 // Filename: fetch_test.v
@@ -25,7 +25,7 @@ module FetchTest(
     output reg [15:0] de_npc,
     output reg [15:0] de_ir,
     output reg [15:0] de_v
-    );
+);
 
     wire clk;     // Used by pipeline latches
     wire mem_clk; // Used by memory module
@@ -50,11 +50,11 @@ module FetchTest(
         .addr1(PC),
         .addr2(16'b0),
         .en(1'b1),
-        .weLow(1'b0),
-        .weHi(1'b0),
-        .dataIn(16'b0),
+        .we_low(1'b0),
+        .we_high(1'b0),
+        .data_in(16'b0),
         // Outputs
-        .dataOut1(instr_bus),
+        .data1_out(instr_bus),
         .mem1_r(imem_r)
     );
 

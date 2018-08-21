@@ -6,11 +6,16 @@
 #
 ##########################################
 
+
+##########################################
 # Clear the simulator
+##########################################
 
 restart -f -nowave
 
+##########################################
 # Add the waves we want to observe
+##########################################
 
 add wave -divider "Clocks"
 add wave -position end  sim:/LC3BFetchTest/mem_clk
@@ -37,7 +42,9 @@ add wave -position end  sim:/LC3BFetchTest/de_ir
 add wave -position end  sim:/LC3BFetchTest/de_v
 add wave -position end  sim:/LC3BFetchTest/ld_de
 
+##########################################
 # Initial values
+##########################################
 
 force dep_stall 0
 force mem_stall 0
@@ -50,11 +57,15 @@ force trap_pc 16'hbeef
 force raw_clk 0 0
 force raw_clk 0 50, 1 100 -repeat 100
 
+##########################################
 # Check that fetch behaves normally
+##########################################
 
 run 750
 
+##########################################
 # Check that all the stalls work
+##########################################
 
 force dep_stall 1
 run 200
@@ -73,7 +84,9 @@ run 200
 force v_mem_br_stall 0
 run 200
 
+##########################################
 # Check that traps and jumps work
+##########################################
 
 force mem_pcmux 1
 run 200
@@ -82,6 +95,8 @@ run 200
 force mem_pcmux 0
 run 150
 
+##########################################
 # Again check that fetch behaves normally
+##########################################
 
 run 200
