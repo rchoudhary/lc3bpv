@@ -9,6 +9,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
+`ifndef REG_FILE
+`define REG_FILE
+
 module RegFile(
     input clk,
     input [2:0] sr1,
@@ -43,3 +46,5 @@ module RegFile(
     end
     
 endmodule
+
+`endif // REG_FILE

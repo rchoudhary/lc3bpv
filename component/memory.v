@@ -9,6 +9,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
+`ifndef MEMORY
+`define MEMORY
+
 module Memory(
     input clk,
     input [15:0] addr1,
@@ -58,3 +61,5 @@ module Memory(
     end
     
 endmodule
+
+`endif // MEMORY

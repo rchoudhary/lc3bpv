@@ -8,6 +8,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
+`ifndef FETCH_STAGE
+`define FETCH_STAGE
+
 module FetchStage(
     input clk,
     input [15:0] pc,
@@ -48,3 +51,5 @@ module FetchStage(
     end
 
 endmodule
+
+`endif // FETCH_STAGE

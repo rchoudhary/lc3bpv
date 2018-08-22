@@ -10,6 +10,13 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
+`ifndef FETCH_TEST
+`define FETCH_TEST
+
+`include "../misc/clock_dividers.v"
+`include "../fetch_stage.v"
+`include "../component/memory.v"
+
 module FetchTest(
     input raw_clk,
     input dep_stall,
@@ -105,3 +112,5 @@ module FetchTest(
     end
 
 endmodule
+
+`endif // FETCH_TEST

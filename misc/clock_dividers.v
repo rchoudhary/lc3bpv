@@ -8,6 +8,8 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
+`ifndef CLOCK_DIVIDERS
+`define CLOCK_DIVIDERS
 
 // Divides clock signal by 2
 module ClockDivider_2(
@@ -23,3 +25,5 @@ module ClockDivider_2(
         clk_div <= ~clk_div;
     end
 endmodule
+
+`endif // CLOCK_DIVIDERS

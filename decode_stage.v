@@ -8,6 +8,12 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
+`ifndef DECODE_STAGE
+`define DECODE_STAGE
+
+`include "component/control_store.v"
+`include "component/reg_file.v"
+
 module DecodeStage(
     input clk,
     input mem_clk,
@@ -57,7 +63,7 @@ module DecodeStage(
         .sr1(sr1),
         .sr2(sr2),
         .dr(sr_drid),
-        .dataIn(sr_reg_data),
+        .data_in(sr_reg_data),
         .we(v_sr_ld_reg),
         // Outputs
         .sr1_out(sr1_data),
@@ -86,3 +92,5 @@ module DecodeStage(
     assign agex_v = de_v & ~dep_stall;
 
 endmodule
+
+`endif // DECODE_STAGE

@@ -8,6 +8,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
+`ifndef ALU
+`define ALU
+
 module ALU(
     input [15:0] a,
     input [15:0] b,
@@ -36,3 +39,5 @@ module ALU(
     end
     
 endmodule
+
+`endif // ALU

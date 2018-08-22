@@ -9,6 +9,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
+`ifndef SEVEN_SEGMENT
+`define SEVEN_SEGMENT
+
 module HexTo7SegDecoder(
     input [3:0] digit,
     output reg [6:0] seg
@@ -111,3 +114,5 @@ module Hex4Display(
         else i <= i - 1;
     end
 endmodule
+
+`endif // SEVEN_SEGMENT

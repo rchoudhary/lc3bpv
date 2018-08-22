@@ -8,6 +8,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
+`ifndef CONTROL_STORE
+`define CONTROL_STORE
+
 module ControlStore(
     input clk,
     input [5:0] addr,
@@ -88,3 +91,5 @@ module ControlStore(
     end
 
 endmodule
+
+`endif // CONTROL_STORE
