@@ -1,5 +1,5 @@
 ##########################################
-# 
+#
 # Author: Rutvik Choudhary
 # Created: 8/11/18
 # Description: Tests the fetch stage
@@ -18,29 +18,29 @@ restart -f -nowave
 ##########################################
 
 add wave -divider "Clocks"
-add wave -position end  sim:/LC3BFetchTest/mem_clk
-add wave -position end  sim:/LC3BFetchTest/clk
+add wave -position end  sim:/FetchTest/mem_clk
+add wave -position end  sim:/FetchTest/clk
 add wave -divider "Stall Signals"
-add wave -position end  sim:/LC3BFetchTest/dep_stall
-add wave -position end  sim:/LC3BFetchTest/mem_stall
-add wave -position end  sim:/LC3BFetchTest/v_de_br_stall
-add wave -position end  sim:/LC3BFetchTest/v_agex_br_stall
-add wave -position end  sim:/LC3BFetchTest/v_mem_br_stall
+add wave -position end  sim:/FetchTest/dep_stall
+add wave -position end  sim:/FetchTest/mem_stall
+add wave -position end  sim:/FetchTest/v_de_br_stall
+add wave -position end  sim:/FetchTest/v_agex_br_stall
+add wave -position end  sim:/FetchTest/v_mem_br_stall
 add wave -divider "PC Signals"
-add wave -position end  sim:/LC3BFetchTest/PC
-add wave -position end  sim:/LC3BFetchTest/new_pc
-add wave -position end  sim:/LC3BFetchTest/ld_pc
-add wave -position end  sim:/LC3BFetchTest/mem_pcmux
-add wave -position end  sim:/LC3BFetchTest/target_pc
-add wave -position end  sim:/LC3BFetchTest/trap_pc
+add wave -position end  sim:/FetchTest/PC
+add wave -position end  sim:/FetchTest/new_pc
+add wave -position end  sim:/FetchTest/ld_pc
+add wave -position end  sim:/FetchTest/mem_pcmux
+add wave -position end  sim:/FetchTest/target_pc
+add wave -position end  sim:/FetchTest/trap_pc
 add wave -divider "Memory Signals"
-add wave -position end  sim:/LC3BFetchTest/imem_r
-add wave -position end  sim:/LC3BFetchTest/instr_bus
+add wave -position end  sim:/FetchTest/imem_r
+add wave -position end  sim:/FetchTest/instr_bus
 add wave -divider "DE Latches"
-add wave -position end  sim:/LC3BFetchTest/de_npc
-add wave -position end  sim:/LC3BFetchTest/de_ir
-add wave -position end  sim:/LC3BFetchTest/de_v
-add wave -position end  sim:/LC3BFetchTest/ld_de
+add wave -position end  sim:/FetchTest/de_npc
+add wave -position end  sim:/FetchTest/de_ir
+add wave -position end  sim:/FetchTest/de_v
+add wave -position end  sim:/FetchTest/ld_de
 
 ##########################################
 # Initial values
