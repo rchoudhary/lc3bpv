@@ -69,38 +69,38 @@ module Hex4Display(
     output reg [3:0] an
 );
 
-    reg [3:0] activeDigit;
+    reg [3:0] active_digit;
     reg dp;
 
-    wire [6:0] decodedDigit;
-    HexTo7SegDecoder decoder(activeDigit, decodedDigit);
+    wire [6:0] decoded_digit;
+    HexTo7SegDecoder decoder(active_digit, decoded_digit);
 
-    wire slowClk;
-    MultiplexClockDivider clockDiv(clk, slowClk);
+    wire slow_clk;
+    MultiplexClockDivider clockDiv(clk, slow_clk);
 
-    assign seg = {dp, decodedDigit};
+    assign seg = {dp, decoded_digit};
 
     reg [1:0] i;
     initial begin
         i = 3;
     end
 
-    always @(posedge slowClk) begin
+    always @(posedge slow_clk) begin
         case(i)
             3: begin
-                activeDigit <= digits[15:12];
+                active_digit <= digits[15:12];
                 an <= 4'b0111;
             end
             2: begin
-                activeDigit <= digits[11:8];
+                active_digit <= digits[11:8];
                 an <= 4'b1011;
             end
             1: begin
-                activeDigit <= digits[7:4];
+                active_digit <= digits[7:4];
                 an <= 4'b1101;
             end
             0: begin
-                activeDigit <= digits[3:0];
+                active_digit <= digits[3:0];
                 an <= 4'b1110;
             end
             default: begin

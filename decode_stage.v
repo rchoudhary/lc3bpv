@@ -59,12 +59,12 @@ module DecodeStage(
 
     RegFile regFile(
         // Inputs
-        .clk(mem_clk),
-        .sr1(sr1),
-        .sr2(sr2),
-        .dr(sr_drid),
+        .clk    (mem_clk),
+        .sr1    (sr1),
+        .sr2    (sr2),
+        .dr     (sr_drid),
         .data_in(sr_reg_data),
-        .we(v_sr_ld_reg),
+        .we     (v_sr_ld_reg),
         // Outputs
         .sr1_out(sr1_data),
         .sr2_out(sr2_data)
