@@ -8,8 +8,8 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-`ifndef ALU
-`define ALU
+`ifndef ALU_V
+`define ALU_V
 
 module ALU(
     input [15:0] a,
@@ -17,12 +17,12 @@ module ALU(
     input [1:0] op,
     output reg [15:0] res
 );
-    
+
     `define ADD   2'b00
     `define AND   2'b01
     `define XOR   2'b10
     `define PASSA 2'b11
-    
+
     always @(*) begin
         if (op == `ADD) begin
             res <= a + b;
@@ -37,7 +37,7 @@ module ALU(
             res <= a;
         end
     end
-    
+
 endmodule
 
-`endif // ALU
+`endif // ALU_V

@@ -10,8 +10,8 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-`ifndef FETCH_TEST
-`define FETCH_TEST
+`ifndef FETCH_TEST_V
+`define FETCH_TEST_V
 
 `include "../misc/clock_dividers.v"
 `include "../fetch_stage.v"
@@ -72,7 +72,7 @@ module FetchTest(
 
     wire ld_pc;
     wire ld_de;
-    
+
     FetchStage FETCH(
         // Inputs
         .clk(clk),
@@ -113,4 +113,4 @@ module FetchTest(
 
 endmodule
 
-`endif // FETCH_TEST
+`endif // FETCH_TEST_V

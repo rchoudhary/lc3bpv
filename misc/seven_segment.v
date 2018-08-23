@@ -9,8 +9,8 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-`ifndef SEVEN_SEGMENT
-`define SEVEN_SEGMENT
+`ifndef SEVEN_SEGMENT_V
+`define SEVEN_SEGMENT_V
 
 module HexTo7SegDecoder(
     input [3:0] digit,
@@ -35,7 +35,7 @@ module HexTo7SegDecoder(
             4'hD : seg <= 7'b0100001;
             4'hE : seg <= 7'b0000110;
             4'hF : seg <= 7'b0001110;
-            default : seg <= 7'b0111111; 
+            default : seg <= 7'b0111111;
         endcase
     end
 endmodule
@@ -68,23 +68,23 @@ module Hex4Display(
     output [7:0] seg,
     output reg [3:0] an
 );
-    
+
     reg [3:0] activeDigit;
     reg dp;
 
     wire [6:0] decodedDigit;
     HexTo7SegDecoder decoder(activeDigit, decodedDigit);
-    
+
     wire slowClk;
     MultiplexClockDivider clockDiv(clk, slowClk);
 
     assign seg = {dp, decodedDigit};
-        
+
     reg [1:0] i;
     initial begin
         i = 3;
     end
-            
+
     always @(posedge slowClk) begin
         case(i)
             3: begin
@@ -109,10 +109,10 @@ module Hex4Display(
         endcase
 
         dp <= (i == ones_place && dp_en) ? 1 : 0;
-        
+
         if (i == 0) i <= 3;
         else i <= i - 1;
     end
 endmodule
 
-`endif // SEVEN_SEGMENT
+`endif // SEVEN_SEGMENT_V

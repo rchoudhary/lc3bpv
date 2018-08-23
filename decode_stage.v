@@ -8,8 +8,8 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-`ifndef DECODE_STAGE
-`define DECODE_STAGE
+`ifndef DECODE_STAGE_V
+`define DECODE_STAGE_V
 
 `include "component/control_store.v"
 `include "component/reg_file.v"
@@ -74,7 +74,7 @@ module DecodeStage(
     assign v_de_br_stall = de_br_stall & de_v;
 
     wire dr_mux = de_cs[20];
-    wire [2:0] dr = (dr_mux == 0) ? de_ir[11:9] : 3'd7; 
+    wire [2:0] dr = (dr_mux == 0) ? de_ir[11:9] : 3'd7;
 
     wire sr1_needed = de_cs[22];
     wire sr2_needed = de_cs[21];
@@ -93,4 +93,4 @@ module DecodeStage(
 
 endmodule
 
-`endif // DECODE_STAGE
+`endif // DECODE_STAGE_V

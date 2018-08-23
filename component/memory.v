@@ -9,8 +9,8 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-`ifndef MEMORY
-`define MEMORY
+`ifndef MEMORY_V
+`define MEMORY_V
 
 module Memory(
     input clk,
@@ -24,13 +24,13 @@ module Memory(
     output reg [15:0] data2_out,
     output reg mem1_r
 );
-    
+
     reg [7:0] high_bytes [0:32767];
     reg [7:0] low_bytes [0:32767];
-    
+
     wire [14:0] waddr1 = addr1[15:1];
     wire [14:0] waddr2 = addr2[15:1];
-    
+
     reg [15:0] i;
     initial begin
         mem1_r <= 1'b0;
@@ -51,7 +51,7 @@ module Memory(
             end
             if (we_high == 1) begin
                 high_bytes[waddr2] <= data_in[15:8];
-            end  
+            end
         end
         else begin
             mem1_r <= 1'b0;
@@ -59,7 +59,7 @@ module Memory(
             data2_out <= 16'b0;
         end
     end
-    
+
 endmodule
 
-`endif // MEMORY
+`endif // MEMORY_V
