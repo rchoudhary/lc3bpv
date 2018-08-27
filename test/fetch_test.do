@@ -18,29 +18,29 @@ restart -f -nowave
 ##########################################
 
 add wave -divider "Clocks"
-add wave -position end  sim:/FetchTest/mem_clk
-add wave -position end  sim:/FetchTest/clk
+add wave -position end  sim:/FetchTestBench/mem_clk
+add wave -position end  sim:/FetchTestBench/clk
 add wave -divider "Stall Signals"
-add wave -position end  sim:/FetchTest/dep_stall
-add wave -position end  sim:/FetchTest/mem_stall
-add wave -position end  sim:/FetchTest/v_de_br_stall
-add wave -position end  sim:/FetchTest/v_agex_br_stall
-add wave -position end  sim:/FetchTest/v_mem_br_stall
+add wave -position end  sim:/FetchTestBench/dep_stall
+add wave -position end  sim:/FetchTestBench/mem_stall
+add wave -position end  sim:/FetchTestBench/v_de_br_stall
+add wave -position end  sim:/FetchTestBench/v_agex_br_stall
+add wave -position end  sim:/FetchTestBench/v_mem_br_stall
 add wave -divider "PC Signals"
-add wave -position end  sim:/FetchTest/PC
-add wave -position end  sim:/FetchTest/new_pc
-add wave -position end  sim:/FetchTest/ld_pc
-add wave -position end  sim:/FetchTest/mem_pcmux
-add wave -position end  sim:/FetchTest/target_pc
-add wave -position end  sim:/FetchTest/trap_pc
+add wave -position end  sim:/FetchTestBench/PC
+add wave -position end  sim:/FetchTestBench/new_pc
+add wave -position end  sim:/FetchTestBench/ld_pc
+add wave -position end  sim:/FetchTestBench/mem_pcmux
+add wave -position end  sim:/FetchTestBench/target_pc
+add wave -position end  sim:/FetchTestBench/trap_pc
 add wave -divider "Memory Signals"
-add wave -position end  sim:/FetchTest/imem_r
-add wave -position end  sim:/FetchTest/instr_bus
+add wave -position end  sim:/FetchTestBench/imem_r
+add wave -position end  sim:/FetchTestBench/instr_bus
 add wave -divider "DE Latches"
-add wave -position end  sim:/FetchTest/de_npc
-add wave -position end  sim:/FetchTest/de_ir
-add wave -position end  sim:/FetchTest/de_v
-add wave -position end  sim:/FetchTest/ld_de
+add wave -position end  sim:/FetchTestBench/de_npc
+add wave -position end  sim:/FetchTestBench/de_ir
+add wave -position end  sim:/FetchTestBench/de_v
+add wave -position end  sim:/FetchTestBench/ld_de
 
 ##########################################
 # Initial values
