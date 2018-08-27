@@ -12,9 +12,6 @@
 `ifndef LC3BP_V
 `define LC3BP_V
 
-// This needs to be before any include statements!
-`define TESTING
-
 `include "fetch_stage.v"
 `include "decode_stage.v"
 
@@ -44,7 +41,7 @@ module LC3BP(
     input mem_clk,
     input imem_r,
     input [15:0] instr,
-    output pc,
+    output [15:0] PC_out,
 
     // Temporary Inputs
     // These are meant to come from other stages, but since we only have
@@ -172,7 +169,7 @@ module LC3BP(
     );
 
     // Drive outputs of LC3BP module
-    assign pc = PC;
+    assign PC_out = PC;
 
     // Drive testing outputs of LC3BP module
     `ifdef TESTING
