@@ -15,6 +15,11 @@
 `include "component/reg_file.v"
 
 module DecodeStage(
+    // If we're testing, then we'll want to observe the register contents
+    `ifdef TESTING
+        output [127:0] reg_contents,
+    `endif
+
     input clk,
     input mem_clk,
     input [15:0] de_npc,
@@ -30,6 +35,7 @@ module DecodeStage(
     input v_agex_ld_cc,
     input v_mem_ld_cc,
     input v_sr_ld_cc,
+    input [2:0] sr_cc_data,
     input mem_stall,
     output v_de_br_stall,
     output dep_stall,
@@ -38,6 +44,7 @@ module DecodeStage(
     output [15:0] agex_sr2,
     output [2:0] agex_drid_new,
     output [19:0] agex_cs,
+    output [2:0] agex_cc,
     output agex_v
 );
 
@@ -58,6 +65,11 @@ module DecodeStage(
     wire [15:0] sr1_data, sr2_data;
 
     RegFile regFile(
+        // If we're testing, then we'll want to observe the register contents
+        `ifdef TESTING
+            .reg_contents(reg_contents),
+        `endif
+
         // Inputs
         .clk    (mem_clk),
         .sr1    (sr1),
@@ -84,12 +96,23 @@ module DecodeStage(
     wire br_dep_stall = br_op & (v_agex_ld_cc | v_mem_ld_cc | v_sr_ld_cc);
     assign dep_stall = de_v & (sr1_dep_stall | sr2_dep_stall | br_dep_stall);
 
+    reg [2:0] CC;
+
     assign ld_agex = ~mem_stall;
     assign agex_sr1 = sr1_data;
     assign agex_sr2 = sr2_data;
     assign agex_drid_new = dr;
     assign agex_cs = de_cs[19:0];
+    assign agex_cc = CC;
     assign agex_v = de_v & ~dep_stall;
+
+
+
+    always @(posedge clk) begin
+        if (v_sr_ld_cc == 1) begin
+            CC <= sr_cc_data;
+        end
+    end
 
 endmodule
 

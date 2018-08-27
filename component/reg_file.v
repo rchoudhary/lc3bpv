@@ -13,6 +13,11 @@
 `define REG_FILE_V
 
 module RegFile(
+    // If we're testing, then we'll want to observe the register contents
+    `ifdef TESTING
+        output [127:0] reg_contents,
+    `endif
+
     input clk,
     input [2:0] sr1,
     input [2:0] sr2,
@@ -24,6 +29,11 @@ module RegFile(
 );
 
     reg [15:0] storage [0:7];
+
+    `ifdef TESTING
+        assign reg_contents = {storage[0], storage[1], storage[2], storage[3],
+            storage[4], storage[5], storage[6], storage[7]};
+    `endif
 
     initial begin
         storage[0] = 1;
