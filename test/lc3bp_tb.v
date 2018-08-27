@@ -9,8 +9,8 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-`ifndef LC3BPTestBench_V
-`define LC3BPTestBench_V
+`ifndef LC3BP_TB_V
+`define LC3BP_TB_V
 
 `timescale 1ns/1ns
 
@@ -130,4 +130,4 @@ module LC3BPTestBench();
 
 endmodule
 
-`endif // LC3BPTestBench_V
+`endif // LC3BP_TB_V
