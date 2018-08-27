@@ -13,9 +13,9 @@
 `ifndef FETCH_TEST_V
 `define FETCH_TEST_V
 
-`include "../misc/clock_dividers.v"
-`include "../fetch_stage.v"
-`include "../component/memory.v"
+`include "misc/clock_dividers.v"
+`include "fetch_stage.v"
+`include "component/memory.v"
 
 module FetchTest(
     input raw_clk,
