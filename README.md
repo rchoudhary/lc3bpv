@@ -1,5 +1,5 @@
 # LC3BPV
-This is a **V**erilog implementation of the **P**ipelined, **B**yte-Addressible **LC3** processor.
+This is a **V**erilog implementation of the **P**ipelined, **B**yte-Addressable **LC3** processor.
 
 (In the code and documentation, the processor is just referred to as the LC3BP)
 
@@ -9,7 +9,7 @@ The pipeline is a simple 5-stage pipeline:
 
 1. Fetch (F)
 2. Decode (DE)
-3. Address Generation and Execute (AGEX)
+3. Address Generation and Execution (AGEX)
 4. Memory (MEM)
 5. Store Result (SR)
 
