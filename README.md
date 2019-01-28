@@ -77,34 +77,10 @@ Simulation in the future will be done using [Icarus Verilog](http://iverilog.ica
 * A test bench and `.do` file have been created to test the F/DE pipeline. However, the tests themselves have not been implemented.
 
 ## Future Plans
-### Completing the project
 This is what needs to be done in order for the LC3BP simulation to match the functionality of our lab:
 
 * Write tests for the F/DE pipeline.
 * Implement the remaining stages, AGEX, MEM, and SR, and write tests for those stages individually.
 * Write a test bench for the overall LC3BP using the emulator we wrote for the lab as the guide.
 
-After that, work will need to be done to make all the code synthesizable. I will have to create some mechanism for testing the implementation on the Basys 3 board. Maybe using the onboard USB port, I can get the board to talk to my computer so I can observe the latches.
-
-### Beyond Completion
-After that, I can start looking into modifying the pipeline to make it more performant. Some ways include:
-
-* Adding bypasses so that some pipeline bubbles can be minimized/eliminated
-* Optimizing instruction groups that are frequent
-     * An example would be the group `NOT Rx, Rx` followed by `ADD Rx, Rx, #1`. This negates the number in `Rx` and is necessary since there is no dedicated subtraction instruction 
-* Implementing delay slots or even rudimentary branch prediction to further prevent bubbles
-
-If I modify the pipeline, I would have to create new documentation since the document I linked would be inaccurate.
-
-Some modifications could even be made to the ISA such as adding support for more arithmetic instructions such as subtraction, mulitplication, and integer division.
-
-However, at the point I wouldn't be able to call the architecture the LC3-B anymore. It also would mean that I would have to create my own documentation for the ISA.
-
-### Related Projects
-If the implementation of the pipeline changes, I will have to update the eumlator to mimic the new functionality. At that point I may as well rewrite the whole emulator since as it exists, it's just one big ANSI C file. I would most likely rewrite it in C++ and make it more modular.
-
-Another project I had in mind was writing a compiler for ANSI C to LC3-B assembly. That will probably take quite a bit of time. It's just a thought I had. 
-
-If I do write a compiler, I'll definitely want to upgrade the assembler that we had to write as the first lab in the course. Namely, I'd want to make it so it actually outputs errors and such. Of course, since it's a lab, I probably won't be able to publish it...
-
-My main motivation to change the ISA in the future is so that students can't copy my code for class, allowing me to put everything up on GitHub!
+After that, work will need to be done to make all the code synthesizable. Some method of observing the pipeline on the Basys 3 board will also be needed.
