@@ -12,16 +12,13 @@
 `define CONTROL_STORE
 
 module ControlStore(
-    input clk,
     input [5:0] addr,
-    output reg [22:0] cs_bits
+    output [22:0] cs_bits
 );
 
     reg [22:0] ROM [0:63];
 
-    always @(posedge clk) begin
-        cs_bits <= ROM[addr];
-    end
+    assign cs_bits = ROM[addr];
 
     initial begin
         ROM[0]  <= 23'b00001011000010010000000;

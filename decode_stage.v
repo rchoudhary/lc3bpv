@@ -46,7 +46,6 @@ module DecodeStage(
 
     ControlStore CS(
         //Inputs
-        .clk(mem_clk),
         .addr(cs_addr),
         // Outputs
         .cs_bits(de_cs)
@@ -74,7 +73,7 @@ module DecodeStage(
     assign v_de_br_stall = de_br_stall & de_v;
 
     wire dr_mux = de_cs[20];
-    wire [2:0] dr = (dr_mux == 0) ? de_ir[11:9] : 3'd7; 
+    wire [2:0] dr = (dr_mux == 0) ? de_ir[11:9] : 3'd7;
 
     wire sr1_needed = de_cs[22];
     wire sr2_needed = de_cs[21];
