@@ -12,7 +12,6 @@
 `define FETCH_STAGE
 
 module FetchStage(
-    input clk,
     input [15:0] pc,
     input dep_stall,
     input mem_stall,
