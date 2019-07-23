@@ -4,7 +4,7 @@
 // Created: 7/20/19
 // Filename: fetch_testbench.v
 // Modules: FetchTestbench
-// Description: A testbench for the fetch stage module. Prints data in CSV format.
+// Description: A testbench for the fetch stage module.
 //
 //////////////////////////////////////////////////////////////////////////////////
 
@@ -15,7 +15,6 @@
 
 module FetchTestbench;
 
-reg  [15:0] pc;
 reg         dep_stall;
 reg         mem_stall;
 reg         v_de_br_stall;
@@ -23,9 +22,6 @@ reg         v_agex_br_stall;
 reg         v_mem_br_stall;
 reg         imem_r;
 reg   [1:0] mem_pcmux;
-reg  [15:0] target_pc;
-reg  [15:0] trap_pc;
-reg  [15:0] instr;
 wire        ld_pc;
 wire [15:0] de_npc;
 wire [15:0] de_ir;
@@ -34,7 +30,8 @@ wire        ld_de;
 wire [15:0] new_pc;
 
 FetchStage fetch_module(
-    .pc(pc),
+    // Inputs
+    .pc(16'h3000),
     .dep_stall(dep_stall),
     .mem_stall(mem_stall),
     .v_de_br_stall(v_de_br_stall),
@@ -42,9 +39,10 @@ FetchStage fetch_module(
     .v_mem_br_stall(v_mem_br_stall),
     .imem_r(imem_r),
     .mem_pcmux(mem_pcmux),
-    .target_pc(target_pc),
-    .trap_pc(trap_pc),
-    .instr(instr),
+    .target_pc(16'hdead),
+    .trap_pc(16'hbeef),
+    .instr(16'habcd),
+    // Outputs
     .ld_pc(ld_pc),
     .de_npc(de_npc),
     .de_ir(de_ir),
@@ -55,13 +53,17 @@ FetchStage fetch_module(
 
 task check_status;
 begin
-    $write("%d,%b,%b,%b,%b,%b,%b,%2b,,", $time, dep_stall, mem_stall, v_de_br_stall, v_agex_br_stall, v_mem_br_stall, imem_r, mem_pcmux);
-    $write("%b,%h,%h,%b,%b,%h\n", ld_pc, de_npc, de_ir, de_v, ld_de, new_pc);
+    $write("t=%0t\n", $time);
+    $write("----------------\n");
+    $write("dep_stall=%b\t\tmem_stall=%b\n", dep_stall, mem_stall);
+    $write("v_de_br_stall=%b\t\tv_agex_br_stall=%b\tv_mem_br_stall=%b\n", v_de_br_stall, v_agex_br_stall, v_mem_br_stall);
+    $write("imem_r=%b\t\tmem_pcmux=%2b\n", imem_r, mem_pcmux);
+    $write("\tld_pc\t=\t%b\n\tde_npc\t=\t0x%h\n\tde_ir\t=\t0x%h\n\tde_v\t=\t%b\n\tld_de\t=\t%b\n\tnew_pc\t=\t0x%h\n", ld_pc, de_npc, de_ir, de_v, ld_de, new_pc);
+    $write("\n");
 end
 endtask
 
 initial begin
-    pc = 16'h3000;
     dep_stall = 0;
     mem_stall = 0;
     v_de_br_stall = 0;
@@ -69,47 +71,39 @@ initial begin
     v_mem_br_stall = 0;
     imem_r = 1;
     mem_pcmux = 0;
-    target_pc = 16'hdead;
-    trap_pc = 16'hbeef;
-    instr = 16'habcd;
 
-    $write("%s,%s,%s,%s,%s,%s,%s,%s,,", "time", "dep_stall", "mem_stall", "v_de_br_stall", "v_agex_br_stall", "v_mem_br_stall", "imem_r","mem_pcmux");
-    $write("%s,%s,%s,%s,%s,%s\n", "ld_pc", "de_npc", "de_ir", "de_v", "ld_de", "new_pc");
-end
-
-always begin
-    #10 check_status();
+    #10 check_status;
 
     mem_pcmux = 1;
-    #10 check_status();
+    #10 check_status;
 
     mem_pcmux = 2;
-    #10 check_status();
+    #10 check_status;
 
     dep_stall = 1;
-    #10 check_status();
-
+    #10 check_status;
     dep_stall = 0;
+
     mem_stall = 1;
-    #10 check_status();
-
+    #10 check_status;
     mem_stall = 0;
+
     v_de_br_stall = 1;
-    #10 check_status();
-
+    #10 check_status;
     v_de_br_stall = 0;
+
     v_agex_br_stall = 1;
-    #10 check_status();
-
+    #10 check_status;
     v_agex_br_stall = 0;
+
     v_mem_br_stall = 1;
-    #10 check_status();
-
+    #10 check_status;
     v_mem_br_stall = 0;
-    imem_r = 0;
-    #10 check_status();
 
-    #100 $finish;
+    imem_r = 0;
+    #10 check_status;
+
+    #1 $finish;
 end
 
 endmodule
