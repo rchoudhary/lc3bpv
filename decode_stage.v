@@ -11,12 +11,11 @@
 `ifndef DECODE_STAGE
 `define DECODE_STAGE
 
-`include "component/control_store.v"
-`include "component/reg_file.v"
+`include "./component/control_store.v"
+`include "./component/reg_file.v"
 
 module DecodeStage(
     input clk,
-    input mem_clk,
     input [15:0] de_npc,
     input [15:0] de_ir,
     input de_v,
@@ -56,9 +55,9 @@ module DecodeStage(
     wire [2:0] sr2 = (sr2_id_mux == 0) ? de_ir[2:0] : de_ir[11:9];
     wire [15:0] sr1_data, sr2_data;
 
-    RegFile regFile(
+    RegFile reg_file(
         // Inputs
-        .clk(mem_clk),
+        .clk(clk),
         .sr1(sr1),
         .sr2(sr2),
         .dr(sr_drid),
