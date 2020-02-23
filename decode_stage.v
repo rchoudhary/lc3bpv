@@ -11,8 +11,8 @@
 `ifndef DECODE_STAGE
 `define DECODE_STAGE
 
-`include "./component/control_store.v"
-`include "./component/reg_file.v"
+// `include "./component/control_store.v"
+// `include "./component/reg_file.v"
 
 module DecodeStage(
     input clk,
