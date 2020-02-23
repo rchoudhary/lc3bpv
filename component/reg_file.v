@@ -9,10 +9,15 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-`ifndef REG_FILE
-`define REG_FILE
+`ifndef REG_FILE_V
+`define REG_FILE_V
 
 module RegFile(
+    // If we're testing, then we'll want to observe the register contents
+    `ifdef TESTING
+        output [127:0] reg_contents,
+    `endif
+
     input clk,
     input [2:0] sr1,
     input [2:0] sr2,
@@ -22,9 +27,14 @@ module RegFile(
     output [15:0] sr1_out,
     output [15:0] sr2_out
 );
-    
+
     reg [15:0] storage [0:7];
-    
+
+    `ifdef TESTING
+        assign reg_contents = {storage[0], storage[1], storage[2], storage[3],
+            storage[4], storage[5], storage[6], storage[7]};
+    `endif
+
     initial begin
         storage[0] = 1;
         storage[1] = 2;
@@ -35,16 +45,16 @@ module RegFile(
         storage[6] = 7;
         storage[7] = 8;
     end
-    
+
     assign sr1_out = storage[sr1];
     assign sr2_out = storage[sr2];
-    
+
     always @(posedge clk) begin
         if (we == 1) begin
             storage[dr] <= data_in;
         end
     end
-    
+
 endmodule
 
-`endif // REG_FILE
+`endif // REG_FILE_V

@@ -8,8 +8,8 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-`ifndef FETCH_STAGE
-`define FETCH_STAGE
+`ifndef FETCH_STAGE_V
+`define FETCH_STAGE_V
 
 module FetchStage(
     input [15:0] pc,
@@ -51,4 +51,4 @@ module FetchStage(
 
 endmodule
 
-`endif // FETCH_STAGE
+`endif // FETCH_STAGE_V

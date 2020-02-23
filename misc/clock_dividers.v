@@ -8,12 +8,12 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-`ifndef CLOCK_DIVIDERS
-`define CLOCK_DIVIDERS
+`ifndef CLOCK_DIVIDERS_V
+`define CLOCK_DIVIDERS_V
 
 // Divides clock signal by 2
 module ClockDivider_2(
-    input clk, 
+    input clk,
     output reg clk_div
 );
 
@@ -26,4 +26,4 @@ module ClockDivider_2(
     end
 endmodule
 
-`endif // CLOCK_DIVIDERS
+`endif // CLOCK_DIVIDERS_V
